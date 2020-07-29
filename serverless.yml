@@ -34,5 +34,6 @@ functions:
   Login: ${file(./lambdas/login/serverless.yml)}
   RefreshSession: ${file(./lambdas/refresh-session/serverless.yml)}
   Logout: ${file(./lambdas/logout/serverless.yml)}
+  CreateCfdSignedUrl: ${file(./lambdas/create-cfd-signed-url/serverless.yml)}
 layers:
   ApiLayer: ${file(./layer/serverless.yml)}

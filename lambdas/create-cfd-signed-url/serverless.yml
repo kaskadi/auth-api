@@ -1,0 +1,12 @@
+handler: lambdas/create-cfd-signed-url/create-cfd-signed-url.handler
+name: create-cfd-signed-url
+layers:
+  - { Ref: ApiLayerLambdaLayer }
+package:
+  include:
+    - lambdas/create-cfd-signed-url/create-cfd-signed-url.js
+events:
+  - http:
+      method: get
+      path: getSignedUrl
+      cors: true
