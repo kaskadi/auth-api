@@ -1,5 +1,6 @@
 handler: lambdas/refresh-session/refresh-session.handler
 name: refresh-session
+timeout: 30
 layers:
   - { Ref: ApiLayerLambdaLayer }
 package:
