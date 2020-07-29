@@ -1,5 +1,5 @@
 {
-  "name": "template-kaskadi-api",
+  "name": "auth-api",
   "version": "1.0.0",
   "description": "",
   "main": "serverless.yml",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kaskadi/template-kaskadi-api.git"
+    "url": "git+https://github.com/kaskadi/auth-api.git"
   },
   "keywords": [],
   "author": "Klimapartner GmbH <kontakt@klimapartner.de> (https://klimapartner.de)",
@@ -23,9 +23,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kaskadi/template-kaskadi-api/issues"
+    "url": "https://github.com/kaskadi/auth-api/issues"
   },
-  "homepage": "https://github.com/kaskadi/template-kaskadi-api#readme",
+  "homepage": "https://github.com/kaskadi/auth-api#readme",
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^8.0.1",
