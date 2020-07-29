@@ -36,6 +36,3 @@ functions:
   Logout: ${file(./lambdas/logout/serverless.yml)}
 layers:
   ApiLayer: ${file(./layer/serverless.yml)}
-resources:
-  Resources:
-    CognitoAccessRole: ${file(./resources/cognito-access-role/serverless.yml)}

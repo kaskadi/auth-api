@@ -1,6 +1,5 @@
 handler: lambdas/login/login.handler
 name: login
-role: !GetAtt CognitoAccessRole.Arn
 timeout: 30
 layers:
   - { Ref: ApiLayerLambdaLayer }
