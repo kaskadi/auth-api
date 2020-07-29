@@ -5,6 +5,7 @@ layers:
 package:
   include:
     - lambdas/refresh-session/refresh-session.js
+    - lambdas/refresh-session/helpers/**
 events:
   - http:
       method: post
