@@ -7,6 +7,8 @@ package:
   include:
     - lambdas/refresh-session/refresh-session.js
     - lambdas/refresh-session/helpers/**
+environment:
+  COGNITO_CLIENT_ID: ${env:COGNITO_CLIENT_ID}
 events:
   - http:
       method: post
