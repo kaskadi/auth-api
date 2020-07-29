@@ -1,0 +1,13 @@
+handler: lambdas/logout/logout.handler
+name: logout
+layers:
+  - { Ref: ApiLayerLambdaLayer }
+package:
+  include:
+    - lambdas/logout/logout.js
+    - lambdas/logout/node_modules/**
+events:
+  - http:
+      method: post
+      path: logout
+      cors: true

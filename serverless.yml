@@ -33,6 +33,7 @@ provider:
 functions:
   Login: ${file(./lambdas/login/serverless.yml)}
   RefreshSession: ${file(./lambdas/refresh-session/serverless.yml)}
+  Logout: ${file(./lambdas/logout/serverless.yml)}
 layers:
   ApiLayer: ${file(./layer/serverless.yml)}
 resources:
