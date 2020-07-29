@@ -1,0 +1,12 @@
+handler: lambdas/login/login.handler
+name: login
+layers:
+  - { Ref: ApiLayerLambdaLayer }
+package:
+  include:
+    - lambdas/login/login.js
+events:
+  - http:
+      method: post
+      path: login
+      cors: true
