@@ -12,5 +12,8 @@
     "Holger Will <h.will@klimapartner.de>",
     "Alexis Lemaire <a.lemaire@klimapartner.de>"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "aws-sdk": "^2.722.0"
+  }
 }
