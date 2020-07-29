@@ -37,3 +37,6 @@ functions:
   CreateCfdSignedUrl: ${file(./lambdas/create-cfd-signed-url/serverless.yml)}
 layers:
   ApiLayer: ${file(./layer/serverless.yml)}
+resources:
+  Resources:
+    CognitoAuthorizer: ${file(./resources/cognito-authorizer/serverless.yml)}

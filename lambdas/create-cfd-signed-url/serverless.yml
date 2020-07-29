@@ -10,3 +10,6 @@ events:
       method: get
       path: getSignedUrl
       cors: true
+      authorizer:
+        type: COGNITO_USER_POOLS
+        authorizerId: !Ref CognitoAuthorizer
