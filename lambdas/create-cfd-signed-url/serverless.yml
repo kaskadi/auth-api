@@ -5,6 +5,9 @@ layers:
 package:
   include:
     - lambdas/create-cfd-signed-url/create-cfd-signed-url.js
+environment:
+  CFD_KEY_PAIR_ID: ${env:CFD_KEY_PAIR_ID}
+  CFD_PRIVATE_KEY: ${env:CFD_PRIVATE_KEY}
 events:
   - http:
       method: get
