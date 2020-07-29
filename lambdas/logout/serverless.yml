@@ -1,11 +1,12 @@
 handler: lambdas/logout/logout.handler
 name: logout
+timeout: 30
 layers:
   - { Ref: ApiLayerLambdaLayer }
 package:
   include:
     - lambdas/logout/logout.js
-    - lambdas/logout/node_modules/**
+    - lambdas/logout/helpers/**
 events:
   - http:
       method: post
