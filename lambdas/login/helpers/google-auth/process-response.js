@@ -1,4 +1,6 @@
-module.exports = response => res => {
-  response.body = JSON.stringify({ idToken: res.sessionToken })
-  return response
+module.exports = baseResponse => res => {
+  return {
+    ...baseResponse,
+    body: JSON.stringify({ idToken: res.sessionToken })
+  }
 }

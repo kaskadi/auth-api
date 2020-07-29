@@ -1,6 +1,8 @@
-module.exports = response => err => {
+module.exports = baseResponse => err => {
   console.log(JSON.stringify(err, null, 2))
-  response.statusCode = 401
-  response.body = JSON.stringify({ message: 'Provided credentials are incorrect.' })
-  return response
+  return {
+    ...baseResponse,
+    statusCode: 401,
+    body: JSON.stringify({ message: 'Provided credentials are incorrect.' })
+  }
 }

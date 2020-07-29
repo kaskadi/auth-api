@@ -1,7 +1,10 @@
-module.exports = response => err => {
+module.exports = baseResponse => err => {
   console.log(JSON.stringify(err, null, 2))
-  response.statusCode = err.code === 'NotAuthorizedException' ? 401 : 502
-  const message = err.code === 'NotAuthorizedException' ? 'Provided credentials are incorrect.' : 'An error occured...'
-  response.body = JSON.stringify({ message })
-  return response
+  return {
+    ...baseResponse,
+    statusCode: err.code === 'NotAuthorizedException' ? 401 : 502,
+    body: JSON.stringify({
+      message: err.code === 'NotAuthorizedException' ? 'Provided credentials are incorrect.' : 'An error occured...'
+    })
+  }
 }
