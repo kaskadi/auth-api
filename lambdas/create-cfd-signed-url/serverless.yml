@@ -1,0 +1,19 @@
+handler: lambdas/create-cfd-signed-url/create-cfd-signed-url.handler
+name: create-cfd-signed-url
+layers:
+  - { Ref: ApiLayerLambdaLayer }
+package:
+  include:
+    - lambdas/create-cfd-signed-url/create-cfd-signed-url.js
+    - lambdas/create-cfd-signed-url/helpers/**
+environment:
+  CFD_KEY_PAIR_ID: ${env:CFD_KEY_PAIR_ID}
+  CFD_PRIVATE_KEY: ${env:CFD_PRIVATE_KEY}
+events:
+  - http:
+      method: get
+      path: get-signed-url
+      cors: true
+      authorizer:
+        type: COGNITO_USER_POOLS
+        authorizerId: !Ref CognitoAuthorizer

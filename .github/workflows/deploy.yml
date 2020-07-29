@@ -9,6 +9,7 @@ on:
       - 'serverless.yml'
       - 'layer/**'
       - 'lambdas/**'
+      - 'resources/**'
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -16,10 +17,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install dependencies
       run: npm i
-    - name: Install layer dependencies
-      run: |
-        cd layer/nodejs
-        npm i
     - name: serverless-check
       uses: kaskadi/action-slscli@master
       with:
@@ -28,10 +25,20 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_KEY_SECRET }}
+        COGNITO_USER_POOL_ARN: ${{ secrets.COGNITO_USER_POOL_ARN }}
+        COGNITO_CLIENT_ID: ${{ secrets.COGNITO_CLIENT_ID }}
+        COGNITO_IDENTITY_POOL_ID: ${{ secrets.COGNITO_IDENTITY_POOL_ID }}
+        CFD_KEY_PAIR_ID: ${{ secrets.CFD_KEY_PAIR_ID }}
+        CFD_PRIVATE_KEY: ${{ secrets.CFD_PRIVATE_KEY }}
     - name: serverless-deploy
       uses: kaskadi/action-slscli@master
       with:
-        command: '--version'
+        command: 'deploy -v'
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_KEY_SECRET }}
+        COGNITO_USER_POOL_ARN: ${{ secrets.COGNITO_USER_POOL_ARN }}
+        COGNITO_CLIENT_ID: ${{ secrets.COGNITO_CLIENT_ID }}
+        COGNITO_IDENTITY_POOL_ID: ${{ secrets.COGNITO_IDENTITY_POOL_ID }}
+        CFD_KEY_PAIR_ID: ${{ secrets.CFD_KEY_PAIR_ID }}
+        CFD_PRIVATE_KEY: ${{ secrets.CFD_PRIVATE_KEY }}

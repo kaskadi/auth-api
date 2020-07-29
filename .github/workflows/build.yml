@@ -19,3 +19,9 @@ jobs:
       run: npm i
     - name: Test
       run: npm test
+      env:
+        COGNITO_USER_POOL_ARN: ${{ secrets.COGNITO_USER_POOL_ARN }}
+        COGNITO_CLIENT_ID: ${{ secrets.COGNITO_CLIENT_ID }}
+        COGNITO_IDENTITY_POOL_ID: ${{ secrets.COGNITO_IDENTITY_POOL_ID }}
+        CFD_KEY_PAIR_ID: ${{ secrets.CFD_KEY_PAIR_ID }}
+        CFD_PRIVATE_KEY: ${{ secrets.CFD_PRIVATE_KEY }}

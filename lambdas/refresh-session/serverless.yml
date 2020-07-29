@@ -1,0 +1,16 @@
+handler: lambdas/refresh-session/refresh-session.handler
+name: refresh-session
+timeout: 30
+layers:
+  - { Ref: ApiLayerLambdaLayer }
+package:
+  include:
+    - lambdas/refresh-session/refresh-session.js
+    - lambdas/refresh-session/helpers/**
+environment:
+  COGNITO_CLIENT_ID: ${env:COGNITO_CLIENT_ID}
+events:
+  - http:
+      method: post
+      path: refresh
+      cors: true

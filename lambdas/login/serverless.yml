@@ -1,10 +1,15 @@
 handler: lambdas/login/login.handler
 name: login
+timeout: 30
 layers:
   - { Ref: ApiLayerLambdaLayer }
 package:
   include:
     - lambdas/login/login.js
+    - lambdas/login/helpers/**
+environment:
+  COGNITO_CLIENT_ID: ${env:COGNITO_CLIENT_ID}
+  COGNITO_IDENTITY_POOL_ID: ${env:COGNITO_IDENTITY_POOL_ID}
 events:
   - http:
       method: post

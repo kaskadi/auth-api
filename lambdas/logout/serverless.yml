@@ -1,0 +1,14 @@
+handler: lambdas/logout/logout.handler
+name: logout
+timeout: 30
+layers:
+  - { Ref: ApiLayerLambdaLayer }
+package:
+  include:
+    - lambdas/logout/logout.js
+    - lambdas/logout/helpers/**
+events:
+  - http:
+      method: post
+      path: logout
+      cors: true
