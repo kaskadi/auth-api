@@ -20,6 +20,5 @@ jobs:
     - name: Test
       run: npm test
       env:
-        COGNITO_USER_POOL_ID: ${{ secrets.COGNITO_USER_POOL_ID }}
         COGNITO_CLIENT_ID: ${{ secrets.COGNITO_CLIENT_ID }}
         COGNITO_IDENTITY_POOL_ID: ${{ secrets.COGNITO_IDENTITY_POOL_ID }}

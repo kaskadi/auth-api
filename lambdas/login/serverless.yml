@@ -7,7 +7,6 @@ package:
   include:
     - lambdas/login/login.js
 environment:
-  COGNITO_USER_POOL_ID: ${env:COGNITO_USER_POOL_ID}
   COGNITO_CLIENT_ID: ${env:COGNITO_CLIENT_ID}
   COGNITO_IDENTITY_POOL_ID: ${env:COGNITO_IDENTITY_POOL_ID}
 events:
