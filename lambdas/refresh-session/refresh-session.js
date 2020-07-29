@@ -3,12 +3,7 @@ const cognitoRefresh = require('./helpers/cognito-refresh/cognito-refresh.js')
 
 module.exports.handler = async (event) => {
   const data = JSON.parse(event.body)
-  const baseResponse = {
-    statusCode: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*'
-    }
-  }
+  const baseResponse = require('auth-api-utils').getBaseResponse()
   if (data.method === 'Google') {
     return {
       ...baseResponse,

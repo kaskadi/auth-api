@@ -1,11 +1,10 @@
 {
-  "name": "layer",
+  "name": "auth-api-utils",
   "version": "1.0.0",
   "description": "",
-  "main": "",
+  "main": "utils.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "cp -r auth-api-utils node_modules/auth-api-utils"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Klimapartner GmbH <kontakt@klimapartner.de> (https://klimapartner.de)",
@@ -13,8 +12,5 @@
     "Holger Will <h.will@klimapartner.de>",
     "Alexis Lemaire <a.lemaire@klimapartner.de>"
   ],
-  "license": "MIT",
-  "devDependencies": {
-    "aws-sdk": "^2.722.0"
-  }
+  "license": "MIT"
 }
