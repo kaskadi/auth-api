@@ -3,7 +3,7 @@ service:
 package:
   individually: true
   exclude:
-    - '**/**'
+    - "**/**"
 plugins:
   - serverless-aws-documentation
   - serverless-offline
@@ -32,6 +32,7 @@ provider:
     type: http
 functions:
   Login: ${file(./lambdas/login/serverless.yml)}
+  RefreshSession: ${file(./lambdas/refresh-session/serverless.yml)}
 layers:
   ApiLayer: ${file(./layer/serverless.yml)}
 resources:
