@@ -19,7 +19,7 @@ events:
         description: This endpoint allows user to retrieve their authentication data given they provided a proper username and password.
         body:
           - key: method
-            description: 'Defines the authentication provider. Valid values: `'Cognito'`, `'Google'`'
+            description: "Defines the authentication provider. Valid values: `'Cognito'`, `'Google'`"
             default: 'Cognito'
           - key: token
             description: Access token to login. This is used only when logging in via **Google**.

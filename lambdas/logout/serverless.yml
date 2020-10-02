@@ -16,7 +16,7 @@ events:
         description: This endpoint allows user to invalidate any authentication tokens generated with their credentials. **This currently does not support Google as an authentication provider.**
         body:
           - key: method
-            description: 'Defines the authentication provider. Valid values: `'Cognito'`, `'Google'`'
+            description: "Defines the authentication provider. Valid values: `'Cognito'`, `'Google'`"
             default: 'Cognito'
           - key: accessToken
             description: Access token provided when logging in. This applies only to session created via **Cognito**.
