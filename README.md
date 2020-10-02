@@ -143,7 +143,7 @@ Supported methods:
 
 **Description:**
 
-This endpoint returns a CloudFront signed URL that can be used for uploading content into a private CDN.
+This endpoint returns a CloudFront signed URL that can be used for accessing content from a private CDN.
 
 **Query string parameters:**
 
