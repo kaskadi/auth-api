@@ -14,3 +14,11 @@ events:
       method: post
       path: refresh
       cors: true
+      kaskadi-docs:
+        description: This endpoint allows user to refresh their access token in order to avoid having to log in again. This will work until their refresh token expires. **This currently does not support Google as an authentication provider.**
+        body:
+          - key: method
+            description: 'Defines the authentication provider. Valid values: `'Cognito'`, `'Google'`'
+            default: 'Cognito'
+          - key: refreshToken
+            description: Refresh token provided when logging in. This applies only to session created via **Cognito**.
