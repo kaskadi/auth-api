@@ -18,4 +18,4 @@ events:
         type: COGNITO_USER_POOLS
         authorizerId: !Ref CognitoAuthorizer
       kaskadi-docs:
-        description: This endpoint returns a CloudFront signed URL that can be used for uploading content into a private CDN. 
+        description: This endpoint returns a CloudFront signed URL that can be used for accessing content from a private CDN. 
