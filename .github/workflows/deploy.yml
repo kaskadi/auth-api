@@ -10,6 +10,14 @@ on:
       - 'lambdas/**'
       - 'resources/**'
       - 'docs/**'
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_KEY_SECRET }}
+  COGNITO_USER_POOL_ARN: ${{ secrets.COGNITO_USER_POOL_ARN }}
+  COGNITO_CLIENT_ID: ${{ secrets.COGNITO_CLIENT_ID }}
+  COGNITO_IDENTITY_POOL_ID: ${{ secrets.COGNITO_IDENTITY_POOL_ID }}
+  CFD_KEY_PAIR_ID: ${{ secrets.CFD_KEY_PAIR_ID }}
+  CFD_PRIVATE_KEY: ${{ secrets.CFD_PRIVATE_KEY }}
 jobs:
   generate-docs:
     runs-on: ubuntu-latest
@@ -28,12 +36,6 @@ jobs:
       with:
         type: api
         template: docs/template.md
-      env:
-        COGNITO_USER_POOL_ARN: ${{ secrets.COGNITO_USER_POOL_ARN }}
-        COGNITO_CLIENT_ID: ${{ secrets.COGNITO_CLIENT_ID }}
-        COGNITO_IDENTITY_POOL_ID: ${{ secrets.COGNITO_IDENTITY_POOL_ID }}
-        CFD_KEY_PAIR_ID: ${{ secrets.CFD_KEY_PAIR_ID }}
-        CFD_PRIVATE_KEY: ${{ secrets.CFD_PRIVATE_KEY }}
   deploy:
     runs-on: ubuntu-latest
     needs: generate-docs
@@ -53,23 +55,7 @@ jobs:
       uses: serverless/github-action@master
       with:
         args: deploy --noDeploy
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_KEY_SECRET }}
-        COGNITO_USER_POOL_ARN: ${{ secrets.COGNITO_USER_POOL_ARN }}
-        COGNITO_CLIENT_ID: ${{ secrets.COGNITO_CLIENT_ID }}
-        COGNITO_IDENTITY_POOL_ID: ${{ secrets.COGNITO_IDENTITY_POOL_ID }}
-        CFD_KEY_PAIR_ID: ${{ secrets.CFD_KEY_PAIR_ID }}
-        CFD_PRIVATE_KEY: ${{ secrets.CFD_PRIVATE_KEY }}
     - name: serverless deploy
       uses: serverless/github-action@master
       with:
         args: deploy -v
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_KEY_SECRET }}
-        COGNITO_USER_POOL_ARN: ${{ secrets.COGNITO_USER_POOL_ARN }}
-        COGNITO_CLIENT_ID: ${{ secrets.COGNITO_CLIENT_ID }}
-        COGNITO_IDENTITY_POOL_ID: ${{ secrets.COGNITO_IDENTITY_POOL_ID }}
-        CFD_KEY_PAIR_ID: ${{ secrets.CFD_KEY_PAIR_ID }}
-        CFD_PRIVATE_KEY: ${{ secrets.CFD_PRIVATE_KEY }}
