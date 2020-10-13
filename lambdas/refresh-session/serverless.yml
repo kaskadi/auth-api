@@ -22,3 +22,14 @@ events:
             default: 'Cognito'
           - key: refreshToken
             description: Refresh token provided when logging in. This applies only to session created via **Cognito**.
+        examples:
+          - request:
+              body:
+                refreshToken: cognito_refresh_token
+            response:
+              statusCode: 200
+              headers:
+                'Access-Control-Allow-Origin': '*'
+              body:
+                accessToken: cognito_access_token
+                idToken: cognito_id_token
