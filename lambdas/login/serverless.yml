@@ -30,7 +30,6 @@ events:
         examples:
           - request:
               body:
-                method: Cognito
                 Username: cognito_username
                 Password: secret_cognito_pwd
             response:
@@ -43,3 +42,13 @@ events:
                 refreshToken: cognito_refresh_token
                 email: user_email
                 emailHash: user_email_md5_hash
+          - request:
+              body:
+                Username: wrong_cognito_username
+                Password: wrong_secret_cognito_pwd
+            response:
+              statusCode: 401
+              headers:
+                'Access-Control-Allow-Origin': '*'
+              body:
+                message: Provided credentials are incorrect.

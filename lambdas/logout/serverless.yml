@@ -30,3 +30,12 @@ events:
                 'Access-Control-Allow-Origin': '*'
               body:
                 message: User successfully logged out!
+          - request:
+              body:
+                accessToken: wrong_cognito_access_token
+            response:
+              statusCode: 401
+              headers:
+                'Access-Control-Allow-Origin': '*'
+              body:
+                message: Provided access token is incorrect.

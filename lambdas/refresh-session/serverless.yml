@@ -33,3 +33,12 @@ events:
               body:
                 accessToken: cognito_access_token
                 idToken: cognito_id_token
+          - request:
+              body:
+                refreshToken: wrong_cognito_refresh_token
+            response:
+              statusCode: 401
+              headers:
+                'Access-Control-Allow-Origin': '*'
+              body:
+                message: Provided refresh token is incorrect.
