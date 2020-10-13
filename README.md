@@ -128,7 +128,6 @@ POST https://api.klimapartner.net/auth/login
 
 Body:
 {
-  "method": "Cognito",
   "Username": "cognito_username",
   "Password": "secret_cognito_pwd"
 }
@@ -150,6 +149,37 @@ Body:
   "refreshToken": "cognito_refresh_token",
   "email": "user_email",
   "emailHash": "user_email_md5_hash"
+}
+```
+</details>
+
+<details>
+<summary>Example #2</summary>
+
+_Request:_
+
+```HTTP
+POST https://api.klimapartner.net/auth/login
+
+Body:
+{
+  "Username": "wrong_cognito_username",
+  "Password": "wrong_secret_cognito_pwd"
+}
+```
+
+_Response:_
+
+```HTTP
+Status code:
+401
+
+Headers:
+Access-Control-Allow-Origin: *
+
+Body:
+{
+  "message": "Provided credentials are incorrect."
 }
 ```
 </details>
@@ -212,6 +242,36 @@ Body:
 ```
 </details>
 
+<details>
+<summary>Example #2</summary>
+
+_Request:_
+
+```HTTP
+POST https://api.klimapartner.net/auth/logout
+
+Body:
+{
+  "accessToken": "wrong_cognito_access_token"
+}
+```
+
+_Response:_
+
+```HTTP
+Status code:
+401
+
+Headers:
+Access-Control-Allow-Origin: *
+
+Body:
+{
+  "message": "Provided access token is incorrect."
+}
+```
+</details>
+
 ## `/refresh` <a name="/refresh"></a>
 
 Supported methods:
@@ -267,6 +327,36 @@ Body:
 {
   "accessToken": "cognito_access_token",
   "idToken": "cognito_id_token"
+}
+```
+</details>
+
+<details>
+<summary>Example #2</summary>
+
+_Request:_
+
+```HTTP
+POST https://api.klimapartner.net/auth/refresh
+
+Body:
+{
+  "refreshToken": "wrong_cognito_refresh_token"
+}
+```
+
+_Response:_
+
+```HTTP
+Status code:
+401
+
+Headers:
+Access-Control-Allow-Origin: *
+
+Body:
+{
+  "message": "Provided refresh token is incorrect."
 }
 ```
 </details>
