@@ -25,22 +25,83 @@
 <!-- automatically generated documentation will be placed in here -->
 # API endpoints
 
-The following endpoints are defined in this API:
-- [/login](#/login)
-- [/refresh](#/refresh)
-- [/logout](#/logout)
-- [/get-signed-url](#/get-signed-url)
+The origin and root path for this API is: `https://api.klimapartner.net/auth`
 
-## `/login` (target lambda → [login](#login)) <a name="/login"></a>
+The following endpoints are defined in this API:
+- [/get-signed-url](#/get-signed-url)
+- [/login](#/login)
+- [/logout](#/logout)
+- [/refresh](#/refresh)
+
+## `/get-signed-url` <a name="/get-signed-url"></a>
 
 Supported methods:
-- [POST](#POST)
+- [GET](#get-signed-url-GET)
 
-### `POST`
+### `GET` (target lambda → [create-cfd-signed-url](#create-cfd-signed-url)) <a name="get-signed-url-GET"></a>
 
 **Description:**
 
-This endpoint allows user to retrieve their authentication data given they provided a proper username and password.
+This endpoint returns a CloudFront signed URL that can be used for accessing content from a private CDN.
+
+**Authorization:**
+
+|   Type  | Identity source                                       |
+| :-----: | :---------------------------------------------------- |
+| Cognito | <ul><li>method.request.header.Authorization</li></ul> |
+
+**Query string parameters:**
+
+No query string parameters found for this method.
+
+**Request body:**
+
+No body found for this method.
+
+**Examples:**
+
+<details>
+<summary>Example #1</summary>
+
+_Request:_
+
+```HTTP
+GET https://api.klimapartner.net/auth/get-signed-url
+
+Headers:
+Authorization: Bearer COGNITO_ACCESS_TOKEN
+```
+
+_Response:_
+
+```HTTP
+Status code:
+200
+
+Headers:
+Access-Control-Allow-Origin: *
+
+Body:
+{
+  "signedUrl": "some_signed_url"
+}
+```
+</details>
+
+## `/login` <a name="/login"></a>
+
+Supported methods:
+- [POST](#login-POST)
+
+### `POST` (target lambda → [login](#login)) <a name="login-POST"></a>
+
+**Description:**
+
+This endpoint allows user to retrieve their authentication data given they provided a proper username and password. **This currently does not support Google as an authentication provider.**
+
+**Authorization:**
+
+No authorizer found for this method.
 
 **Query string parameters:**
 
@@ -55,62 +116,58 @@ No query string parameters found for this method.
 | `Username` |           | Username used for logging in via **AWS Cognito**.                               |
 | `Password` |           | Password associated with the given username for logging in via **AWS Cognito**. |
 
-_Example request:_
+**Examples:**
+
+<details>
+<summary>Example #1</summary>
+
+_Request:_
 
 ```HTTP
-POST /login
+POST https://api.klimapartner.net/auth/login
 
+Body:
 {
-  "method": "method_value",
-  "token": "token_value",
-  "Username": "Username_value",
-  "Password": "Password_value"
+  "method": "Cognito",
+  "Username": "cognito_username",
+  "Password": "secret_cognito_pwd"
 }
 ```
 
-## `/refresh` (target lambda → [refresh-session](#refresh-session)) <a name="/refresh"></a>
-
-Supported methods:
-- [POST](#POST)
-
-### `POST`
-
-**Description:**
-
-This endpoint allows user to refresh their access token in order to avoid having to log in again. This will work until their refresh token expires. **This currently does not support Google as an authentication provider.**
-
-**Query string parameters:**
-
-No query string parameters found for this method.
-
-**Request body:**
-
-|       Key      |  Default  | Description                                                                                   |
-| :------------: | :-------: | :-------------------------------------------------------------------------------------------- |
-|    `method`    | `Cognito` | Defines the authentication provider. Valid values: `'Cognito'`, `'Google'`                    |
-| `refreshToken` |           | Refresh token provided when logging in. This applies only to session created via **Cognito**. |
-
-_Example request:_
+_Response:_
 
 ```HTTP
-POST /refresh
+Status code:
+200
 
+Headers:
+Access-Control-Allow-Origin: *
+
+Body:
 {
-  "method": "method_value",
-  "refreshToken": "refreshToken_value"
+  "accessToken": "cognito_access_token",
+  "idToken": "cognito_id_token",
+  "refreshToken": "cognito_refresh_token",
+  "email": "user_email",
+  "emailHash": "user_email_md5_hash"
 }
 ```
+</details>
 
-## `/logout` (target lambda → [logout](#logout)) <a name="/logout"></a>
+## `/logout` <a name="/logout"></a>
 
 Supported methods:
-- [POST](#POST)
+- [POST](#logout-POST)
 
-### `POST`
+### `POST` (target lambda → [logout](#logout)) <a name="logout-POST"></a>
 
 **Description:**
 
 This endpoint allows user to invalidate any authentication tokens generated with their credentials. **This currently does not support Google as an authentication provider.**
+
+**Authorization:**
+
+No authorizer found for this method.
 
 **Query string parameters:**
 
@@ -123,27 +180,52 @@ No query string parameters found for this method.
 |    `method`   | `Cognito` | Defines the authentication provider. Valid values: `'Cognito'`, `'Google'`                   |
 | `accessToken` |           | Access token provided when logging in. This applies only to session created via **Cognito**. |
 
-_Example request:_
+**Examples:**
+
+<details>
+<summary>Example #1</summary>
+
+_Request:_
 
 ```HTTP
-POST /logout
+POST https://api.klimapartner.net/auth/logout
 
+Body:
 {
-  "method": "method_value",
-  "accessToken": "accessToken_value"
+  "accessToken": "cognito_access_token"
 }
 ```
 
-## `/get-signed-url` (target lambda → [create-cfd-signed-url](#create-cfd-signed-url)) <a name="/get-signed-url"></a>
+_Response:_
+
+```HTTP
+Status code:
+200
+
+Headers:
+Access-Control-Allow-Origin: *
+
+Body:
+{
+  "message": "User successfully logged out!"
+}
+```
+</details>
+
+## `/refresh` <a name="/refresh"></a>
 
 Supported methods:
-- [GET](#GET)
+- [POST](#refresh-POST)
 
-### `GET`
+### `POST` (target lambda → [refresh-session](#refresh-session)) <a name="refresh-POST"></a>
 
 **Description:**
 
-This endpoint returns a CloudFront signed URL that can be used for accessing content from a private CDN.
+This endpoint allows user to refresh their access token in order to avoid having to log in again. This will work until their refresh token expires. **This currently does not support Google as an authentication provider.**
+
+**Authorization:**
+
+No authorizer found for this method.
 
 **Query string parameters:**
 
@@ -151,13 +233,43 @@ No query string parameters found for this method.
 
 **Request body:**
 
-No body found for this method.
+|       Key      |  Default  | Description                                                                                   |
+| :------------: | :-------: | :-------------------------------------------------------------------------------------------- |
+|    `method`    | `Cognito` | Defines the authentication provider. Valid values: `'Cognito'`, `'Google'`                    |
+| `refreshToken` |           | Refresh token provided when logging in. This applies only to session created via **Cognito**. |
 
-_Example request:_
+**Examples:**
+
+<details>
+<summary>Example #1</summary>
+
+_Request:_
 
 ```HTTP
-GET /get-signed-url
+POST https://api.klimapartner.net/auth/refresh
+
+Body:
+{
+  "refreshToken": "cognito_refresh_token"
+}
 ```
+
+_Response:_
+
+```HTTP
+Status code:
+200
+
+Headers:
+Access-Control-Allow-Origin: *
+
+Body:
+{
+  "accessToken": "cognito_access_token",
+  "idToken": "cognito_id_token"
+}
+```
+</details>
 
 # API resources
 
@@ -211,6 +323,20 @@ Layer for auth-api
 ### Dependencies
 
 - `auth-api-utils` (local utility)
+- `aws-sdk` (local utility)
+- `base64-js` (local utility)
+- `buffer` (local utility)
+- `events` (local utility)
+- `ieee754` (local utility)
+- `isarray` (local utility)
+- `jmespath` (local utility)
+- `punycode` (local utility)
+- `querystring` (local utility)
+- `sax` (local utility)
+- `url` (local utility)
+- `uuid` (local utility)
+- `xml2js` (local utility)
+- `xmlbuilder` (local utility)
 
 See [configuration file](./serverless.yml) for more details.
 
