@@ -69,22 +69,22 @@ _Request:_
 GET https://api.klimapartner.net/auth/get-signed-url
 
 Headers:
-Authorization: Bearer COGNITO_ACCESS_TOKEN
+  Authorization: Bearer COGNITO_ACCESS_TOKEN
 ```
 
 _Response:_
 
 ```HTTP
 Status code:
-200
+  200
 
 Headers:
-Access-Control-Allow-Origin: *
+  Access-Control-Allow-Origin: *
 
 Body:
-{
-  "signedUrl": "some_signed_url"
-}
+  {
+    "signedUrl": "some_signed_url"
+  }
 ```
 </details>
 
@@ -127,29 +127,29 @@ _Request:_
 POST https://api.klimapartner.net/auth/login
 
 Body:
-{
-  "Username": "cognito_username",
-  "Password": "secret_cognito_pwd"
-}
+  {
+    "Username": "cognito_username",
+    "Password": "secret_cognito_pwd"
+  }
 ```
 
 _Response:_
 
 ```HTTP
 Status code:
-200
+  200
 
 Headers:
-Access-Control-Allow-Origin: *
+  Access-Control-Allow-Origin: *
 
 Body:
-{
-  "accessToken": "cognito_access_token",
-  "idToken": "cognito_id_token",
-  "refreshToken": "cognito_refresh_token",
-  "email": "user_email",
-  "emailHash": "user_email_md5_hash"
-}
+  {
+    "accessToken": "cognito_access_token",
+    "idToken": "cognito_id_token",
+    "refreshToken": "cognito_refresh_token",
+    "email": "user_email",
+    "emailHash": "user_email_md5_hash"
+  }
 ```
 </details>
 
@@ -162,25 +162,25 @@ _Request:_
 POST https://api.klimapartner.net/auth/login
 
 Body:
-{
-  "Username": "wrong_cognito_username",
-  "Password": "wrong_secret_cognito_pwd"
-}
+  {
+    "Username": "wrong_cognito_username",
+    "Password": "wrong_secret_cognito_pwd"
+  }
 ```
 
 _Response:_
 
 ```HTTP
 Status code:
-401
+  401
 
 Headers:
-Access-Control-Allow-Origin: *
+  Access-Control-Allow-Origin: *
 
 Body:
-{
-  "message": "Provided credentials are incorrect."
-}
+  {
+    "message": "Provided credentials are incorrect."
+  }
 ```
 </details>
 
@@ -221,24 +221,24 @@ _Request:_
 POST https://api.klimapartner.net/auth/logout
 
 Body:
-{
-  "accessToken": "cognito_access_token"
-}
+  {
+    "accessToken": "cognito_access_token"
+  }
 ```
 
 _Response:_
 
 ```HTTP
 Status code:
-200
+  200
 
 Headers:
-Access-Control-Allow-Origin: *
+  Access-Control-Allow-Origin: *
 
 Body:
-{
-  "message": "User successfully logged out!"
-}
+  {
+    "message": "User successfully logged out!"
+  }
 ```
 </details>
 
@@ -251,24 +251,24 @@ _Request:_
 POST https://api.klimapartner.net/auth/logout
 
 Body:
-{
-  "accessToken": "wrong_cognito_access_token"
-}
+  {
+    "accessToken": "wrong_cognito_access_token"
+  }
 ```
 
 _Response:_
 
 ```HTTP
 Status code:
-401
+  401
 
 Headers:
-Access-Control-Allow-Origin: *
+  Access-Control-Allow-Origin: *
 
 Body:
-{
-  "message": "Provided access token is incorrect."
-}
+  {
+    "message": "Provided access token is incorrect."
+  }
 ```
 </details>
 
@@ -309,25 +309,25 @@ _Request:_
 POST https://api.klimapartner.net/auth/refresh
 
 Body:
-{
-  "refreshToken": "cognito_refresh_token"
-}
+  {
+    "refreshToken": "cognito_refresh_token"
+  }
 ```
 
 _Response:_
 
 ```HTTP
 Status code:
-200
+  200
 
 Headers:
-Access-Control-Allow-Origin: *
+  Access-Control-Allow-Origin: *
 
 Body:
-{
-  "accessToken": "cognito_access_token",
-  "idToken": "cognito_id_token"
-}
+  {
+    "accessToken": "cognito_access_token",
+    "idToken": "cognito_id_token"
+  }
 ```
 </details>
 
@@ -340,24 +340,24 @@ _Request:_
 POST https://api.klimapartner.net/auth/refresh
 
 Body:
-{
-  "refreshToken": "wrong_cognito_refresh_token"
-}
+  {
+    "refreshToken": "wrong_cognito_refresh_token"
+  }
 ```
 
 _Response:_
 
 ```HTTP
 Status code:
-401
+  401
 
 Headers:
-Access-Control-Allow-Origin: *
+  Access-Control-Allow-Origin: *
 
 Body:
-{
-  "message": "Provided refresh token is incorrect."
-}
+  {
+    "message": "Provided refresh token is incorrect."
+  }
 ```
 </details>
 
