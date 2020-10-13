@@ -16,7 +16,7 @@ events:
       path: login
       cors: true
       kaskadi-docs:
-        description: This endpoint allows user to retrieve their authentication data given they provided a proper username and password.
+        description: This endpoint allows user to retrieve their authentication data given they provided a proper username and password. For now it only supports logging in via **Cognito**.
         body:
           - key: method
             description: "Defines the authentication provider. Valid values: `'Cognito'`, `'Google'`"
