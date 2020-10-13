@@ -20,3 +20,13 @@ events:
             default: 'Cognito'
           - key: accessToken
             description: Access token provided when logging in. This applies only to session created via **Cognito**.
+        examples:
+          - request:
+              body:
+                accessToken: cognito_access_token
+            response:
+              statusCode: 200
+              headers:
+                'Access-Control-Allow-Origin': '*'
+              body:
+                message: User successfully logged out!
