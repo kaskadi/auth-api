@@ -412,21 +412,8 @@ Layer for auth-api
 
 ### Dependencies
 
+- `aws-sdk`, version: `2.771.0` ([see on NPM](https://www.npmjs.com/package/aws-sdk))
 - `auth-api-utils` (local utility)
-- `aws-sdk` (local utility)
-- `base64-js` (local utility)
-- `buffer` (local utility)
-- `events` (local utility)
-- `ieee754` (local utility)
-- `isarray` (local utility)
-- `jmespath` (local utility)
-- `punycode` (local utility)
-- `querystring` (local utility)
-- `sax` (local utility)
-- `url` (local utility)
-- `uuid` (local utility)
-- `xml2js` (local utility)
-- `xmlbuilder` (local utility)
 
 See [configuration file](./serverless.yml) for more details.
 
