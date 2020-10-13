@@ -33,18 +33,18 @@ events:
         # this field allows you to define a set of request/response examples to display in the documentation
         examples:
           - request:
+              headers:
+                'Content-Type': 'application/json'
               queryStringParameters:
                 key1: hello
                 key2: test
               body:
                 param1: does not make sense in GET
                 param2: but this is a test
-              headers:
-                'Content-Type': 'application/json'
             response:
-              body:
-                resParam1: hello
-                resParam2: test
               statusCode: 200
               headers:
                 'x-kaskadi-data': some data
+              body:
+                resParam1: hello
+                resParam2: test
