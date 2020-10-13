@@ -27,3 +27,19 @@ events:
             description: Username used for logging in via **AWS Cognito**.
           - key: Password
             description: Password associated with the given username for logging in via **AWS Cognito**.
+        examples:
+          - request:
+              body:
+                method: Cognito
+                Username: cognito_username
+                Password: secret_cognito_pwd
+            response:
+              statusCode: 200
+              headers:
+                'Access-Control-Allow-Origin': '*'
+              body:
+                accessToken: cognito_access_token
+                idToken: cognito_id_token
+                refreshToken: cognito_refresh_token
+                email: user_email
+                emailHash: user_email_md5_hash
