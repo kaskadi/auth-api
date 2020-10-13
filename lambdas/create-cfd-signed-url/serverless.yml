@@ -18,4 +18,12 @@ events:
         type: COGNITO_USER_POOLS
         authorizerId: !Ref CognitoAuthorizer
       kaskadi-docs:
-        description: This endpoint returns a CloudFront signed URL that can be used for accessing content from a private CDN. 
+        description: This endpoint returns a CloudFront signed URL that can be used for accessing content from a private CDN.
+        examples:
+          - request: {}
+            response:
+              statusCode: 200
+              headers:
+                'Access-Control-Allow-Origin': '*'
+              body:
+                signedUrl: some_signed_url
