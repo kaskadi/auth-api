@@ -33,6 +33,11 @@ events:
         # this field allows you to define a set of request/response examples to display in the documentation
         examples:
           - request:
+              pathParameters: # any path parameters specified in here will be swapped by their respective value in the example request
+                id: 123
+                some-param: true
+                another_param: hey
+                proxy+: hello
               headers:
                 'Content-Type': 'application/json'
               queryStringParameters:
