@@ -375,33 +375,33 @@ The following layers are used in this API:
 
 ## login <a name="login"></a>
 
-|  Name | Sources                | Timeout |               Handler               | Layers                                              |
-| :---: | :--------------------- | :-----: | :---------------------------------: | :-------------------------------------------------- |
-| login | <ul><li>HTTP</li></ul> |   30s   | [handler](./lambdas/login/login.js) | <ul><li>[auth-api-layer](#auth-api-layer)</li></ul> |
+|  Name | Sources                       | Timeout |               Handler               | Layers                                              |
+| :---: | :---------------------------- | :-----: | :---------------------------------: | :-------------------------------------------------- |
+| login | <ul><li>HTTP (POST)</li></ul> |   30s   | [handler](./lambdas/login/login.js) | <ul><li>[auth-api-layer](#auth-api-layer)</li></ul> |
 
 See [configuration file](./serverless.yml) for more details.
 
 ## refresh-session <a name="refresh-session"></a>
 
-|       Name      | Sources                | Timeout |                         Handler                         | Layers                                              |
-| :-------------: | :--------------------- | :-----: | :-----------------------------------------------------: | :-------------------------------------------------- |
-| refresh-session | <ul><li>HTTP</li></ul> |   30s   | [handler](./lambdas/refresh-session/refresh-session.js) | <ul><li>[auth-api-layer](#auth-api-layer)</li></ul> |
+|       Name      | Sources                       | Timeout |                         Handler                         | Layers                                              |
+| :-------------: | :---------------------------- | :-----: | :-----------------------------------------------------: | :-------------------------------------------------- |
+| refresh-session | <ul><li>HTTP (POST)</li></ul> |   30s   | [handler](./lambdas/refresh-session/refresh-session.js) | <ul><li>[auth-api-layer](#auth-api-layer)</li></ul> |
 
 See [configuration file](./serverless.yml) for more details.
 
 ## logout <a name="logout"></a>
 
-|  Name  | Sources                | Timeout |                Handler                | Layers                                              |
-| :----: | :--------------------- | :-----: | :-----------------------------------: | :-------------------------------------------------- |
-| logout | <ul><li>HTTP</li></ul> |   30s   | [handler](./lambdas/logout/logout.js) | <ul><li>[auth-api-layer](#auth-api-layer)</li></ul> |
+|  Name  | Sources                       | Timeout |                Handler                | Layers                                              |
+| :----: | :---------------------------- | :-----: | :-----------------------------------: | :-------------------------------------------------- |
+| logout | <ul><li>HTTP (POST)</li></ul> |   30s   | [handler](./lambdas/logout/logout.js) | <ul><li>[auth-api-layer](#auth-api-layer)</li></ul> |
 
 See [configuration file](./serverless.yml) for more details.
 
 ## create-cfd-signed-url <a name="create-cfd-signed-url"></a>
 
-|          Name         | Sources                | Timeout |                               Handler                               | Layers                                              |
-| :-------------------: | :--------------------- | :-----: | :-----------------------------------------------------------------: | :-------------------------------------------------- |
-| create-cfd-signed-url | <ul><li>HTTP</li></ul> | default | [handler](./lambdas/create-cfd-signed-url/create-cfd-signed-url.js) | <ul><li>[auth-api-layer](#auth-api-layer)</li></ul> |
+|          Name         | Sources                      | Timeout |                               Handler                               | Layers                                              |
+| :-------------------: | :--------------------------- | :-----: | :-----------------------------------------------------------------: | :-------------------------------------------------- |
+| create-cfd-signed-url | <ul><li>HTTP (GET)</li></ul> | default | [handler](./lambdas/create-cfd-signed-url/create-cfd-signed-url.js) | <ul><li>[auth-api-layer](#auth-api-layer)</li></ul> |
 
 See [configuration file](./serverless.yml) for more details.
 
