@@ -6,7 +6,6 @@
 
 [![Deploy status](https://img.shields.io/github/workflow/status/kaskadi/auth-api/deploy?label=deployed&logo=Amazon%20AWS)](https://github.com/kaskadi/auth-api/actions?query=workflow%3Adeploy)
 [![Build status](https://img.shields.io/github/workflow/status/kaskadi/auth-api/build?label=build&logo=mocha)](https://github.com/kaskadi/auth-api/actions?query=workflow%3Abuild)
-[![Syntax check status](https://img.shields.io/github/workflow/status/kaskadi/auth-api/syntax-check?label=syntax-check&logo=serverless)](https://github.com/kaskadi/auth-api/actions?query=workflow%3Asyntax-check)
 [![Docs generation status](https://img.shields.io/github/workflow/status/kaskadi/auth-api/generate-docs?label=docs&logo=read-the-docs)](https://github.com/kaskadi/auth-api/actions?query=workflow%3Agenerate-docs)
 
 **CodeClimate**
